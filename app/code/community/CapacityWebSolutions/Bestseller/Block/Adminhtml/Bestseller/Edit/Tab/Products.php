@@ -1,11 +1,10 @@
 <?php
 /***************************************************************************
-	@extension	: Bestseller Product.
-	@copyright	: Copyright (c) 2015 Capacity Web Solutions.
-	( http://www.capacitywebsolutions.com )
-	@author		: Capacity Web Solutions Pvt. Ltd.
-	@support	: magento@capacitywebsolutions.com	
-***************************************************************************/
+ Extension Name	: Bestseller Products
+ Extension URL	: http://www.magebees.com/magento-bestseller-products-extension.html
+ Copyright		: Copyright (c) 2015 MageBees, http://www.magebees.com
+ Support Email	: support@magebees.com 
+ ***************************************************************************/ 
 class CapacityWebSolutions_Bestseller_Block_Adminhtml_Bestseller_Edit_Tab_Products extends Mage_Adminhtml_Block_Widget_Form
 {
 	public function __construct() {

@@ -1,4 +1,10 @@
 <?php
+/***************************************************************************
+ Extension Name	: Bestseller Products
+ Extension URL	: http://www.magebees.com/magento-bestseller-products-extension.html
+ Copyright		: Copyright (c) 2015 MageBees, http://www.magebees.com
+ Support Email	: support@magebees.com 
+ ***************************************************************************/
 class CapacityWebSolutions_Bestseller_Model_Mysql4_Product_Collection extends Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection
 {
     const SELECT_COUNT_SQL_TYPE_CART           = 1;

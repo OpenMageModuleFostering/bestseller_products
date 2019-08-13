@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<CapacityWebSolutions_Bestseller>
-            <version>2.0.0</version>
+            <version>2.1.0</version>
         </CapacityWebSolutions_Bestseller>
     </modules>
 	<global>
@@ -62,45 +62,18 @@
             </bestseller>
         </routers>
 	</frontend>
-	
 	<admin>
         <routers>
-			<bestseller>
-				<use>admin</use>
+			<adminhtml>
 				<args>
-					<module>CapacityWebSolutions_Bestseller</module>
-					<frontName>bestseller</frontName>
+					<modules>
+						<bestseller after="Mage_Adminhtml">CapacityWebSolutions_Bestseller_Adminhtml</bestseller>
+					</modules>
 				</args>
-			</bestseller>
+			</adminhtml>
         </routers>
     </admin>
-	
-    <adminhtml>
-		<menu>
-			<cws module="bestseller">
-			<title>CWS Extensions</title>
-			<sort_order>70</sort_order> 
-				<children>
-					<bestseller module="bestseller">
-						<title>Bestseller Products</title>
-						<sort_order>70</sort_order>               
-						<children>
-							<groups module="bestseller">
-								<title>Manage Products Manually</title>
-								<sort_order>10</sort_order>
-								<action>bestseller/adminhtml_bestseller</action>
-							</groups>
-							<settings>
-								<title>Manage Settings</title>
-								<sort_order>20</sort_order>
-								<action>adminhtml/system_config/edit/section/bestseller</action>
-							</settings>
-						</children>
-						
-					</bestseller>
-				</children>
-			</cws>
-		</menu>
+	<adminhtml>
 		<layout>
 			<updates>
 				<bestseller>
@@ -108,30 +81,12 @@
 				</bestseller>
 			</updates>
 		</layout>
-		<acl>
-			<resources>
-				<admin>
-					<children>
-						<system>
-							<children>
-								<config>
-									<children>
-										<bestseller>
-											<title>Bestseller Section</title>
-										</bestseller>
-									</children>
-								</config>
-							</children>
-						</system>
-					</children>
-				</admin>
-			</resources>
-		</acl>
 	</adminhtml>
     <default> <!-- Default text value set from admin-->
 		<bestseller>
 			<general>  
 				<enabled>1</enabled>		
+				<display_heading>1</display_heading> 
 				<heading>BESTSELLER PRODUCTS</heading> 
 				<number_of_items>6</number_of_items>
 				<number_of_items_per_row>3</number_of_items_per_row>

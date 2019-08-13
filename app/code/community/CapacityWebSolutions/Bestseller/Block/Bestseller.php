@@ -1,18 +1,17 @@
 <?php
 /***************************************************************************
-	@extension	: Bestseller Product.
-	@copyright	: Copyright (c) 2015 Capacity Web Solutions.
-	( http://www.capacitywebsolutions.com )
-	@author		: Capacity Web Solutions Pvt. Ltd.
-	@support	: magento@capacitywebsolutions.com	
-***************************************************************************/
-
+ Extension Name	: Bestseller Products
+ Extension URL	: http://www.magebees.com/magento-bestseller-products-extension.html
+ Copyright		: Copyright (c) 2015 MageBees, http://www.magebees.com
+ Support Email	: support@magebees.com 
+ ***************************************************************************/
 class CapacityWebSolutions_Bestseller_Block_Bestseller extends Mage_Catalog_Block_Product_Abstract // Mage_Core_Block_Template
 {
 	public function __construct()
 	{
 		$this->setEnabled((bool)Mage::getStoreConfigFlag("bestseller/general/enabled"));
-  		$this->setHeader(Mage::getStoreConfig("bestseller/general/heading"));
+  		$this->setDisplayHeader((bool)Mage::getStoreConfig("bestseller/general/display_heading"));
+		$this->setHeader(Mage::getStoreConfig("bestseller/general/heading"));
 		$this->setLimit((int)Mage::getStoreConfig("bestseller/general/number_of_items"));
 		$this->setItemsPerRow((int)Mage::getStoreConfig("bestseller/general/number_of_items_per_row"));
 		$this->setStoreId(Mage::app()->getStore()->getId());
