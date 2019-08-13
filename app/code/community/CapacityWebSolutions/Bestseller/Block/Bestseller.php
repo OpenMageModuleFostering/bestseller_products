@@ -29,6 +29,27 @@ class CapacityWebSolutions_Bestseller_Block_Bestseller extends Mage_Catalog_Bloc
 		$this->setOrderStatus(Mage::getStoreConfig('bestseller/general/order_status'));
 	}
 	
+	
+	public function setWidgetOptions(){
+		
+		$this->setDisplayHeader((bool)$this->getWdDisplayHeading());
+		$this->setHeader($this->getWdHeading());
+		$this->setLimit((int)$this->getWdNumberOfItems());
+		$this->setItemsPerRow((int)$this->getWdNumberOfItemsPerRow());
+		$this->setImageHeight((int)$this->getWdThumbnailHeight());
+		$this->setImageWidth((int)$this->getWdThumbnailWidth());
+		$this->setTimePeriod((int)$this->getWdTimePeriod());
+		$this->setAddToCart((bool)$this->getWdAddToCart());
+		$this->setActive((bool)$this->getWdActive());
+		$this->setAddToCompare((bool)$this->getWdAddToCompare());
+		$this->setProductsPrice((int)$this->getWdProductsPrice());
+		$this->setReview((int)$this->getWdReview());
+		$this->setOutofStock((int)$this->getWdOutOfStock());
+		$this->setChooseProducts((int)$this->getWdChooseProducts());
+		$this->setSortOrder((int)$this->getWdSortOrderBoth());
+		$this->setOrderStatus($this->getWdOrderStatus());
+	}
+	
 	public function getBestsellerProduct() { 
 		$o_status = $this->getOrderStatus();
 		if($o_status != "all"){
@@ -61,6 +82,14 @@ class CapacityWebSolutions_Bestseller_Block_Bestseller extends Mage_Catalog_Bloc
 			$products->getSelect()->where('order.status IN ('.$order_status.')');
 		}
 		return $products;
+	}
+	
+	 protected function _beforeToHtml(){
+		if($this->getType()=="bestseller/widget")
+		{
+			$this->setWidgetOptions();
+		}
+      // $this->setProductCollection($this->_getProductCollection());
 	}
 	
 	public function getProducts($productid) { 

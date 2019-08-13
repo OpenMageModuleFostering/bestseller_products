@@ -149,7 +149,7 @@
 							<show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-							 <depends><choose_products>3</choose_products></depends>
+							<depends><choose_products>3</choose_products></depends>
 						</sort_order_both>
 						<bundle_products>
 							<label>Display Bundle and Configurable Products</label>
