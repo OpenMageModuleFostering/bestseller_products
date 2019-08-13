@@ -27,10 +27,11 @@
 	$enabled = Mage::getStoreConfig('bestseller/general/enabled'); 
 	$products_price = Mage::getStoreConfig('bestseller/general/products_price');  
 	$review = Mage::getStoreConfig('bestseller/general/review'); 
-	$out_of_stoke = Mage::getStoreConfig('bestseller/general/out_of_stoke');  
+	$out_of_stoke = Mage::getStoreConfig('bestseller/general/out_of_stoke'); 
+ 
 ?>
  <?php if($enabled == 1): ?>
-<div class="sectionHead"><h2><?php echo $this->getHeader(); ?></h2></div>
+<div class="sectionHead"><h2><?php if(count($result) > 0) { echo $this->getHeader(); } ?></h2></div>
 	<table border="0" cellpadding="0" cellspacing="0" class="productList">
 		<?php if ($out_of_stoke == 0) { ?>
 	  	<tr>
