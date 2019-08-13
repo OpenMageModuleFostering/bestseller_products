@@ -1,22 +1,17 @@
 <?php
 /***************************************************************************
-	@extension	: Bestseller Product.
-	@copyright	: Copyright (c) 2014 Capacity Web Solutions.
+	@extension	: Best Seller Products.
+	@copyright	: Copyright (c) 2015 Capacity Web Solutions.
 	( http://www.capacitywebsolutions.com )
 	@author		: Capacity Web Solutions Pvt. Ltd.
 	@support	: magento@capacitywebsolutions.com	
 ***************************************************************************/
-?>
-<?php
 
-class CapacityWebSolutions_Bestseller_IndexController extends Mage_Core_Controller_Front_Action
+class CapacityWebSolutions_Bestseller_Model_Bestseller extends Mage_Core_Model_Abstract
 {
-    public function indexAction()
+    public function _construct()
     {
-     $this->loadLayout(array('default'));
-     $this->renderLayout();
+        parent::_construct();
+        $this->_init('bestseller/bestseller');
     }
 }
-
-
-?>

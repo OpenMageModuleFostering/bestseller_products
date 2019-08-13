@@ -7,6 +7,10 @@
 	@support	: magento@capacitywebsolutions.com	
 ***************************************************************************/
 
-class CapacityWebSolutions_Bestseller_Helper_Data extends Mage_Core_Helper_Abstract
+class CapacityWebSolutions_Bestseller_Model_Mysql4_Bestseller extends Mage_Core_Model_Mysql4_Abstract
 {
+    public function _construct()
+    {    
+        $this->_init('bestseller/bestseller', 'bestseller_id');
+    }
 }
