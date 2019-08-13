@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Bestseller_products",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "This extension is display best seller product.",
+    "authors": [
+    {
+        "name": "Capacity Web Solutions",
+        "email": "magento@capacitywebsolutions.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
