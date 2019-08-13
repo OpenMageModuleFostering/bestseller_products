@@ -1,8 +1,11 @@
 <?php
-/**
- * @copyright  Copyright (c) 2011 Capacity Web Solutions Pvt. Ltd  (http://www.capacitywebsolutions.com)
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
+/***************************************************************************
+	@extension	: Bestseller Product.
+	@copyright	: Copyright (c) 2014 Capacity Web Solutions.
+	( http://www.capacitywebsolutions.com )
+	@author		: Capacity Web Solutions Pvt. Ltd.
+	@support	: magento@capacitywebsolutions.com	
+***************************************************************************/
 ?>
 <style>
 .productList { float:left; width:720px; }
@@ -14,6 +17,10 @@
 </style>
 <?php
 	$result = $this->getBestsellerProduct();
+	$collection = Mage::getResourceModel('catalog/product_collection');
+	$collection->addFieldToFilter('entity_id',array('in'=>$result))->load();
+	$foundIds = array_intersect($result,array_keys($collection->toArray()));
+	$result = array_values($foundIds);
 	$upperLimit = ($this->getLimit()) ? $this->getLimit() : 1; 
 	$itemPerRow = ($this->getItemsPerRow()) ? $this->getItemsPerRow() : 1 ;
 	$model = Mage::getModel('catalog/product');
@@ -32,9 +39,11 @@
 			for($cnt = 0; $cnt<count($result); $cnt++)
 			{
 				$_product = $model->load($result[$cnt]);  //getting product object for particular product id
+								
+				$visibility = $_product->getData('visibility');
 				$status =  $_product->getData('status');
 				$is_salable = $_product->getData('is_salable');
-				if($status == 1)
+				if($status == 1 && $visibility == 4)
 				{	 
 				 if ($is_salable == 1 )
 				 {  
@@ -118,7 +127,8 @@
 			{
 				$_product = $model->load($result[$cnt]);  //getting product object for particular product id
 				$status =  $_product->getData('status'); 
-				if ($status == 1)
+				$visibility = $_product->getData('visibility');
+				if ($status == 1 && $visibility == 4)
 				{
 				 if($x <= $upperLimit)
 				 {
