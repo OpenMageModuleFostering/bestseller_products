@@ -33,8 +33,9 @@ class CapacityWebSolutions_Bestseller_Block_Bestseller extends Mage_Catalog_Bloc
          $write = Mage::getSingleton('core/resource')->getConnection('core_write');
 		 $read = Mage::getSingleton('core/resource')->getConnection('core_read');
 		 $table_prefixx = Mage::getConfig()->getTablePrefix(); 
-	   	 $res = $write->query("select max(qo) as des_qty,`product_id`,`parent_item_id` FROM (select sum(`qty_ordered`) AS qo,`product_id`,created_at,store_id,`parent_item_id` from ".$table_prefixx."sales_flat_order_item Group By `product_id`) AS t1 where store_id = ".$this->getStoreId()." AND parent_item_id is null  AND created_at between'".$newdate."' AND '".$date."' Group By `product_id` order By des_qty desc"); 
+	   	 $res = $write->query("select max(qo) as des_qty,`product_id`,`parent_item_id`,`order_id` FROM (select sum(p.qty_ordered) AS qo,p.product_id,p.created_at,p.store_id,p.parent_item_id, s.status, p.order_id  from sales_flat_order as s, sales_flat_order_item as p where s.entity_id = p.order_id AND s.status = 'complete'  AND p.store_id = ".$this->getStoreId()." Group By p.product_id) AS t1 where store_id = ".$this->getStoreId()." AND parent_item_id is null  AND created_at between'".$newdate."' AND '".$date."' Group By `product_id` order By des_qty desc");
         
+		
 		 while ($row = $res->fetch()) 
     	  { 
 			$maxQty[]=$row['product_id'];
